@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_flutter/models/task.dart';
 import 'package:todo_flutter/models/task_data.dart';
 
 /// Created by Naveen Verma on 17-12-2021
@@ -47,7 +46,7 @@ class AddTaskScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 50.0),
-              child: FlatButton(
+              child: TextButton(
                 onPressed: () {
                   if (_controller.text.isNotEmpty) {
                     Provider.of<TaskData>(context, listen: false)
@@ -55,7 +54,11 @@ class AddTaskScreen extends StatelessWidget {
                     Navigator.pop(context);
                   }
                 },
-                color: Colors.lightBlueAccent,
+                style: const ButtonStyle().copyWith(
+                  backgroundColor: MaterialStateProperty.all(
+                    Colors.lightBlueAccent,
+                  ),
+                ),
                 child: const Text(
                   "Add",
                   style: TextStyle(color: Colors.white),
