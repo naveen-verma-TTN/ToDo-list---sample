@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_flutter/components/task_list.dart';
-import 'package:todo_flutter/models/task.dart';
 import 'package:todo_flutter/models/task_data.dart';
 
 import 'add_task_screen.dart';
@@ -20,6 +19,7 @@ class TasksScreen extends StatefulWidget {
 class _TasksScreenState extends State<TasksScreen> {
   @override
   Widget build(BuildContext context) {
+    debugPrint('rebuild');
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       body: Column(
