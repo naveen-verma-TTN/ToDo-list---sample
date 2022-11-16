@@ -57,13 +57,16 @@ class _TasksScreenState extends State<TasksScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "${context.watch<TaskData>().taskCount} Tasks",
-                    style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w500),
+                  child: Consumer<TaskData>(
+                    builder: (context, taskData, child) => Text(
+                      "${taskData.taskCount} Tasks",
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
+                  // todo: Or we can simply use "${context.watch<TaskData>().taskCount} Tasks",
                 ),
                 const SizedBox(
                   height: 10.0,

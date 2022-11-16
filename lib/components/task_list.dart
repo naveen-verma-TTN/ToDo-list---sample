@@ -12,24 +12,43 @@ class TaskList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<TaskData>(builder: (context, taskData, child) {
-      return ListView.builder(
-        itemCount: taskData.taskCount,
-        itemBuilder: (context, index) {
-          return Provider<int>(
-            create: (BuildContext context) {
-              return index;
-            },
-            child: TaskTile(
-              title: taskData.taskList[index].name,
-              isChecked: taskData.taskList[index].isDone,
-              onLongPressedCallback: () {
-                taskData.deleteTask(taskData.taskList[index]);
+    return Consumer<TaskData>(
+      builder: (context, taskData, child) {
+        return Column(
+          children: [
+            // child ?? Text('empty'),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: taskData.taskCount,
+              itemBuilder: (context, index) {
+                return Provider<int>(
+                  create: (BuildContext context) {
+                    return index;
+                  },
+                  child: TaskTile(
+                    title: taskData.taskList[index].name,
+                    isChecked: taskData.taskList[index].isDone,
+                    onLongPressedCallback: () {
+                      taskData.deleteTask(taskData.taskList[index]);
+                    },
+                  ),
+                );
               },
             ),
-          );
-        },
-      );
-    });
+          ],
+        );
+      },
+      // child: const Padding(
+      //   padding: EdgeInsets.all(8.0),
+      //   child: Text(
+      //     'Things to buy today',
+      //     style: TextStyle(
+      //       fontSize: 20.0,
+      //       color: Colors.grey,
+      //       fontWeight: FontWeight.w700,
+      //     ),
+      //   ),
+      // ),
+    );
   }
 }

@@ -18,5 +18,15 @@ class MyApp extends StatelessWidget {
         home: TasksScreen(),
       ),
     );
+
+    /* todo: we also have MultiProvider
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => A()),
+        ChangeNotifierProvider(create: (context) => B()),
+      ],
+      child: const MyApp(),
+    ),
+     */
   }
 }
